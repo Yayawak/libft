@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <string.h>
-#include "ft_isdigit.c"
+#include "ft_isascii.c"
 
 int	main(void)
 {
-    int i =	ft_isdigit(55);
-    printf("%d", i);
+	ft_isascii();
 	return (0);
 }
