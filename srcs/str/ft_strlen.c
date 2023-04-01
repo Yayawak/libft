@@ -1,4 +1,6 @@
-int ft_strlen(char* str)
+#include "../../includes/libft.h"
+
+size_t ft_strlen(const char* str)
 {
     int len = 0;
 
@@ -8,15 +10,10 @@ int ft_strlen(char* str)
     }
     return (len);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-#include "ft_strlen.c"
 
-int	main(void)
-{
-	int i = ft_strlen("strlen");
-    printf("len : %d\n", i);
-	return (0);
-}
-*/
+/* int	main(void) */
+/* { */
+/* 	int i = ft_strlen("strlen"); */
+/*     printf("len : %d\n", i); */
+/* 	return (0); */
+/* } */
