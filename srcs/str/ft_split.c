@@ -6,7 +6,7 @@ char ** ft_split(char const *s, char c)
     char *  end;
     char ** str_arr;
     int     sep_count;
-    size_t  i;
+    int     i;
 
     start = (char *)s;
     sep_count = 0;
@@ -36,16 +36,16 @@ char ** ft_split(char const *s, char c)
     return (str_arr);
 }
 
-int main()
-{
-    /* char *  cols = "Name,AttackDamage,MoveSpeed,Class"; */
-    char *  cols = "Name,,AttackDamage,MoveSpeed,Class UUID, UML, FIGMA,";
-    /* char *  cols = "Name,,AttackDamage,MoveSpeed,Class"; */
-    char    sep = ',';
-    char ** str_arr = ft_split(cols, sep);
+/* int main() */
+/* { */
+/*     /1* char *  cols = "Name,AttackDamage,MoveSpeed,Class"; *1/ */
+/*     char *  cols = "Name,,AttackDamage,MoveSpeed,Class UUID, UML, FIGMA,"; */
+/*     /1* char *  cols = "Name,,AttackDamage,MoveSpeed,Class"; *1/ */
+/*     char    sep = ','; */
+/*     char ** str_arr = ft_split(cols, sep); */
 
-    for (int i = 0; str_arr[i] != NULL; i++)
-    {
-        printf("element[%d] = %s\n", i, str_arr[i]);
-    }
-}
+/*     for (int i = 0; str_arr[i] != NULL; i++) */
+/*     { */
+/*         printf("element[%d] = %s\n", i, str_arr[i]); */
+/*     } */
+/* } */
