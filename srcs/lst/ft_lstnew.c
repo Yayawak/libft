@@ -25,7 +25,8 @@ t_list *    ft_lstnew(void *content)
 
     root = (t_list *)malloc(sizeof(t_list));
     if (!root)
-        return (NULL);
+        return (0);
+        /* return (NULL); */
     // no need to malloc for content because content already exist on some address we don't need to duplicate it we want to 'link' it !
     root->content = content;
     root->next = NULL;
