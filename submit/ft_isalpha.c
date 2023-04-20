@@ -1,6 +1,17 @@
-/* #include <stdio.h> */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/20 14:11:59 by athawebo          #+#    #+#             */
+/*   Updated: 2023/04/20 14:12:57 by athawebo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_isalpha(char);
+import "libft.h"
+
 
 /* int main(int argc, char** argv) */
 /* { */
@@ -19,17 +30,11 @@ int ft_isalpha(char);
 /*     return (0); */
 /* } */
 
-int ft_isalpha(char c)
+int	ft_isalpha(char c)
 {
-
-    /* printf("c = %d\n", c); */
-    /* if ((c >= 65 && c <= 90) || */
-    /*     (c >= 97 && c <= 122)) */
-    if ((c >= 'A' && c <= 'Z') ||
-        (c >= 'a' && c <= 'z'))
-    {
-        return (1);
-    }
-    return (0);
+	if ((c >= 'A' && c <= 'Z')
+		|| (c >= 'a' && c <= 'z'))
+		return (1);
+	return (0);
 }
 

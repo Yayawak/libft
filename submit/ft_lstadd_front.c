@@ -1,23 +1,33 @@
-#include "../../includes/libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/20 14:25:53 by athawebo          #+#    #+#             */
+/*   Updated: 2023/04/20 14:27:09 by athawebo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 // insert the new node to be "1st node"
-void    ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-    t_list *    root;
+	t_list	*root;
 
-    /* if (!lst || !new) */
-    /*     return ; */
-    if (!new)
-        return ;
-    if (!lst)
-    {
-        *lst = new;
-        return ;
-    }
-    root = *lst;
+	if (!new)
+		return ;
+	if (!lst)
+	{
+		*lst = new;
+		return ;
+	}
+	root = *lst;
 
-    new->next = root;
-    *lst = new;
+	new->next = root;
+	*lst = new;
 }
 
 /* int main() */
@@ -31,7 +41,8 @@ void    ft_lstadd_front(t_list **lst, t_list *new)
 
 /*     printf("1 : %s\n", (char *)(n1->content)); */
 /*     printf("2 : %s\n", (char *)(n1->next->content)); */
-/*     /1* printf("2 : %s\n", (char *)(++n1->content)); *1/ // this is not right lol */
+/*     /1* printf("2 : %s\n", (char *)(++n1->content)); 
+/ *1/ // this is not right lol */
 /*     /1* printf("2 : %s\n", (char *)(n2->content)); *1/ */
 
 /*     return (0); */

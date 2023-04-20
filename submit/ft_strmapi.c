@@ -1,31 +1,41 @@
-#include "../../includes/libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/20 14:58:39 by athawebo          #+#    #+#             */
+/*   Updated: 2023/04/20 14:59:29 by athawebo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char *  ft_strmapi(char const *s, char (*f)(unsigned int, char))
+#include "libft.h"
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-    char *  tmp;
-    size_t  len;
-    size_t  i;
+	char	*tmp;
+	size_t	len;
+	size_t	i;
 
-    len = ft_strlen(s);
-    i = -1;
-    tmp = (char *)malloc(sizeof(char) * (len + 1));
-    if (!tmp)
-        return (NULL);
-    while (++i < len)
-    {
-        tmp[i] = f(1, s[i]);
-        /* tmp[i] = (*f)(1, s[i]); */
-        printf("tmp[%zu] = %c\n", i, tmp[i]);
-    }
+	len = ft_strlen(s);
+	i = -1;
+	tmp = (char *)malloc(sizeof(char) * (len + 1));
+	if (!tmp)
+		return (NULL);
+	while (++i < len)
+	{
+		tmp[i] = f(1, s[i]);
+	}
 
-    tmp[len] = '\0';
-    return (tmp);
+	tmp[len] = '\0';
+	return (tmp);
 }
 
-char    ceasarShift(unsigned int n, char c)
-{
-    return (c + n);
-}
+// char    ceasarShift(unsigned int n, char c)
+// {
+// 	return (c + n);
+// }
 
 /* int main() */
 /* { */

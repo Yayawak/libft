@@ -1,33 +1,34 @@
-#include "../../includes/libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/20 14:55:53 by athawebo          #+#    #+#             */
+/*   Updated: 2023/04/20 14:55:54 by athawebo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-size_t ft_strlen(const char* str)
+#include "libft.h"
+
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-    int len = 0;
+	size_t	c;
+	size_t	d;
 
-    while(*str != '\0') {
-        len++;
-        str++;
-    }
-    return (len);
-}
-
-size_t ft_strlcat(char* restrict dst, const char* restrict src, size_t dstsize)
-{
-    size_t c;
-    size_t d;
-
-    c = ft_strlen(dst);
-    if (dstsize <= c)
-        return (dstsize + ft_strlen(src));
-    d = 0;
-    while (src[d] != '\0' && c + 1 < dstsize)
-    {
-        dst[c] = src[d];
-        c++;
-        d++;
-    }
-    dst[c] = '\0';
-    return (c + src[d]);
+	c = ft_strlen(dst);
+	if (dstsize <= c)
+		return (dstsize + ft_strlen(src));
+	d = 0;
+	while (src[d] != '\0' && c + 1 < dstsize)
+	{
+		dst[c] = src[d];
+		c++;
+		d++;
+	}
+	dst[c] = '\0';
+	return (c + src[d]);
 }
 
 /*

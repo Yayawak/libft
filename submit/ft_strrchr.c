@@ -1,16 +1,16 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/20 15:01:44 by athawebo          #+#    #+#             */
+/*   Updated: 2023/04/20 15:02:21 by athawebo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-unsigned    ft_strlen(const char *str)
-{
-    unsigned    len;
-
-    len = 0;
-    while (str[len] != '\0')
-    {
-        len++;
-    }
-    return (len);
-}
+#include "libft.h"
 
 /* char *  ft_strrchr(const char *s, int c) */
 /* { */
@@ -30,32 +30,31 @@ unsigned    ft_strlen(const char *str)
 /*     return (0); */
 /* } */
 
-char *  ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-    unsigned int    i;
+	unsigned int	i;
 
-    i = ft_strlen(s) - 1;
+	i = ft_strlen(s) - 1;
 
-    while (i >= 0)
-    {
-        if (s[i] == c)
-        {
-            /* printf("index found : %d", i); */
-            return ((char *)s);
-        }
-        i--;
-    }
-    return (0);
+	while (i >= 0)
+	{
+		if (s[i] == c)
+		{
+			return ((char *)s);
+		}
+		i--;
+	}
+	return (0);
 }
 
-int main()
-{
-    /* char*   str = "You must write your funcion impolementatin"; */
-    char*   str = "You Funk";
-    char    c = 'F';
-    printf("str : %s\nsearch char : %c\nlocation index : %p",
-            str,
-            c,
-            ft_strrchr(str, c)
-        ) ;
-}
+// int main()
+// {
+// 	/* char*   str = "You must write your funcion impolementatin"; */
+// 	char*   str = "You Funk";
+// 	char    c = 'F';
+// 	printf("str : %s\nsearch char : %c\nlocation index : %p",
+// 			str,
+// 			c,
+// 			ft_strrchr(str, c)
+// 		) ;
+// }

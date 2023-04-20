@@ -10,6 +10,8 @@ OBJS_DIRS	= $(foreach dir, $(SUBDIRS), $(addprefix $(DIR_OBJS)/, $(dir)))
 SRCS		= $(foreach dir, $(SRCS_DIRS), $(wildcard $(dir)/*.c))
 OBJS		= $(subst $(DIR_SRCS), $(DIR_OBJS), $(SRCS:.c=.o))
 
+=>
+
 INCLUDES	= -I includes
 
 CC			= clang

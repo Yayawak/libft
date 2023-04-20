@@ -1,4 +1,16 @@
-#include "../../includes/libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/20 14:24:38 by athawebo          #+#    #+#             */
+/*   Updated: 2023/04/20 14:25:35 by athawebo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 /* void    ft_lstadd_back(t_list **lst, t_list *new) */
 /* { */
@@ -28,16 +40,16 @@
 /*     tmp->next = new; */
 /* } */
 
-void    ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-    if (!new)
-        return ;
-    if (!*lst)
-    {
-        *lst = new;
-        return ;
-    }
-    ft_lstlast(*lst)->next = new;
+	if (!new)
+		return ;
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	ft_lstlast(*lst)->next = new;
 }
 
 /* int main() */
@@ -55,7 +67,8 @@ void    ft_lstadd_back(t_list **lst, t_list *new)
 /*     /1* printf("The content of last node is %s\n", (char *)( *1/ */
 /*     /1*             ft_lstlast(n1)->content *1/ */
 /*     /1*             )); *1/ */
-/*     /1* printf("The address  of last node is %p\n", (char *)(ft_lstlast(n1))); *1/ */
+/*     /1* printf("The address  of last node is %p\n",
+ (char *)(ft_lstlast(n1))); *1/ */
 /*     t_list  **root_ptr = &n1; */
 
 /*     ft_lstadd_back(root_ptr, n2); */

@@ -1,4 +1,16 @@
-#include "../../includes/libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/20 14:37:00 by athawebo          #+#    #+#             */
+/*   Updated: 2023/04/20 14:39:25 by athawebo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 /* struct s_list *    ft_lstnew(void *content) */
 /* t_list *    ft_lstnew(void *content) */
@@ -19,19 +31,17 @@
 /*     return (root); */
 /* } */
 
-t_list *    ft_lstnew(void *content)
+t_list	*ft_lstnew(void *content)
 {
-    t_list *    root;
+	t_list	*root;
 
-    root = (t_list *)malloc(sizeof(t_list));
-    if (!root)
-        return (0);
-        /* return (NULL); */
-    // no need to malloc for content because content already exist on some address we don't need to duplicate it we want to 'link' it !
-    root->content = content;
-    root->next = NULL;
+	root = (t_list *)malloc(sizeof(t_list));
+	if (!root)
+		return (0);
+	root->content = content;
+	root->next = NULL;
 
-    return (root);
+	return (root);
 }
 
 /* int main() */

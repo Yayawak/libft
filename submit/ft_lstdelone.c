@@ -1,27 +1,29 @@
-#include "../../includes/libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/20 14:29:05 by athawebo          #+#    #+#             */
+/*   Updated: 2023/04/20 14:29:36 by athawebo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 // pointer to function 'del' that takes a void pointer as argument
 // only free content
 // dont free 'next' attribute
-void    ft_lstdelone(t_list *lst, void (*del)(void *))
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-    /* if (lst) */
-    /* { */
-    /*     if (lst->content && del) */
-    /*         del(lst->content); */
-    /*     free(lst); */
-    /* } */
-    /* if (!lst) */
-    /*     return ; */
-    /* del(lst->content); */
-    /* free(lst); */
-    if (!del)
-        return ;
-    if (lst)
-    {
-        (*del)(lst->content);
-        free(lst);
-    }
+	if (!del)
+		return ;
+	if (lst)
+	{
+		(*del)(lst->content);
+		free(lst);
+	}
 }
 
 /* void    del_content(void *content) */

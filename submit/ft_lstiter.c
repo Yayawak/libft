@@ -1,34 +1,46 @@
-#include "../../includes/libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/20 14:29:50 by athawebo          #+#    #+#             */
+/*   Updated: 2023/04/20 14:31:54 by athawebo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void    ft_lstiter(t_list *lst, void (*f)(void *))
+#include "libft.h"
+
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-    if (!f || ! lst)
-        return ;
-    if (lst)
-    {
-        f(lst->content);
-        ft_lstiter(lst->next, f);
-    }
+	if (!f || ! lst)
+		return ;
+	if (lst)
+	{
+		f(lst->content);
+		ft_lstiter(lst->next, f);
+	}
 }
 
-void    capitalize(char * s)
-/* void    capitalize(void *s) */
-{
-    s = (char *)s;
-    size_t  i;
-    char    c;
+// void	capitalize(char *s)
+// {
+// 	size_t	i;
+// 	char	c;
 
-    i = 0;
-    while (s[i])
-    {
-        c = s[i];
-        if (i == 0 && (c >= 'a' && c <= 'z'))
-            c -= 'a' - 'A';
-        printf("%c", c);
-        i++;
-    }
-    printf("\n");
-}
+// 	s = (char *)s;
+
+// 	i = 0;
+// 	while (s[i])
+// 	{
+// 		c = s[i];
+// 		if (i == 0 && (c >= 'a' && c <= 'z'))
+//         	c -= 'a' - 'A';
+// 		printf("%c", c);
+//         i++;
+// 	}
+// 	printf("\n");
+// }
 
 /* int main() */
 /* { */

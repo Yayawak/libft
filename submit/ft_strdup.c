@@ -1,22 +1,30 @@
-#include "../../includes/libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/20 14:50:03 by athawebo          #+#    #+#             */
+/*   Updated: 2023/04/20 14:50:38 by athawebo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char    *ft_strdup(const char *s1)
+#include "libft.h"
+
+char	*ft_strdup(const char *s1)
 {
-    size_t  len;
-    char    *dup;
+	size_t	len;
+	char	*dup;
 
-    len = ft_strlen(s1) + 1;
-    printf("len of %zu\n", len);
-    dup = (char *)malloc(len * sizeof(char));
-
-    if (dup == NULL)
-        return (NULL);
-
-    while (*s1)
-        *dup++ = *s1++;
-    *dup = '\0';
-
-    return (dup - len + 1);
+	len = ft_strlen(s1) + 1;
+	dup = (char *)malloc(len * sizeof(char));
+	if (dup == NULL)
+		return (NULL);
+	while (*s1)
+		*dup++ = *s1++;
+	*dup = '\0';
+	return (dup - len + 1);
 }
 
 /* int main() */
