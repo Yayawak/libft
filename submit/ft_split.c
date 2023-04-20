@@ -6,7 +6,7 @@
 /*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:45:49 by athawebo          #+#    #+#             */
-/*   Updated: 2023/04/20 14:48:35 by athawebo         ###   ########.fr       */
+/*   Updated: 2023/04/20 18:18:10 by athawebo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	**ft_split(char const *s, char c)
 	char	*start;
 	char	*end;
 	char	**str_arr;
-	int		**sep_count;
+	int		sep_count;
 	int		i;
 
 	start = (char *)s;

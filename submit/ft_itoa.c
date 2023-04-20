@@ -6,22 +6,29 @@
 /*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:14:54 by athawebo          #+#    #+#             */
-/*   Updated: 2023/04/20 14:24:20 by athawebo         ###   ########.fr       */
+/*   Updated: 2023/04/20 18:18:37 by athawebo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+int	get_number_size(int n, int size)
+{
+	if (n <= 0)
+		return (size);
+	return (get_number_size(n / 10, size + 1));
+}
+
+
 char	*ft_itoa(int n)
 {
 	char	*str;
 	int		len;
-	int		tmp;
 	int		is_neg;
 
 	is_neg = 0;
 	len = 1;
-	len += get_number_size(n);
+	len += get_number_size(n, 0);
 	if (n < 0)
 	{
 		is_neg = 1;
@@ -37,14 +44,6 @@ char	*ft_itoa(int n)
 	if (is_neg)
 		str[0] = '-';
 	return (str);
-}
-
-// int	get_number_size(int n)
-int	get_number_size(int n, int size)
-{
-	if (n <= 0)
-		return (size);
-	return (get_number_size(n / 10, size + 1));
 }
 
 

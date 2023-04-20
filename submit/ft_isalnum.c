@@ -6,13 +6,13 @@
 /*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:59:14 by athawebo          #+#    #+#             */
-/*   Updated: 2023/04/20 14:03:10 by athawebo         ###   ########.fr       */
+/*   Updated: 2023/04/20 18:14:01 by athawebo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(unsigned int c)
+int	ft_isalnum(int c)
 {
 	if (((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
 		|| (c >= '0' && c <= '9'))
@@ -25,7 +25,7 @@ int	ft_isalnum(unsigned int c)
 #include <stdio.h>
 int main()
 {
-    printf("fn('9') : result = %d\n", ft_isalnum('9'));
+	printf("fn('9') : result = %d\n", ft_isalnum('9'));
     printf("fn('k') : result = %d\n", ft_isalnum('k'));
 }
 */

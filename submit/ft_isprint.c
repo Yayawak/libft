@@ -6,13 +6,13 @@
 /*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:14:15 by athawebo          #+#    #+#             */
-/*   Updated: 2023/04/20 14:14:43 by athawebo         ###   ########.fr       */
+/*   Updated: 2023/04/20 18:14:26 by athawebo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(unsigned char c)
+int	ft_isprint(int c)
 {
 	if ((c >= 0 && c <= 31) || (c == 127))
 		return (0);

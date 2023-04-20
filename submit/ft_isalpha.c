@@ -6,11 +6,11 @@
 /*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:11:59 by athawebo          #+#    #+#             */
-/*   Updated: 2023/04/20 14:12:57 by athawebo         ###   ########.fr       */
+/*   Updated: 2023/04/20 18:15:03 by athawebo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-import "libft.h"
+#include "libft.h"
 
 
 /* int main(int argc, char** argv) */
@@ -30,7 +30,7 @@ import "libft.h"
 /*     return (0); */
 /* } */
 
-int	ft_isalpha(char c)
+int	ft_isalpha(int c)
 {
 	if ((c >= 'A' && c <= 'Z')
 		|| (c >= 'a' && c <= 'z'))

@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 14:13:36 by athawebo          #+#    #+#             */
-/*   Updated: 2023/04/20 18:13:15 by athawebo         ###   ########.fr       */
+/*   Created: 2023/04/20 15:16:52 by athawebo          #+#    #+#             */
+/*   Updated: 2023/04/20 16:44:06 by athawebo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(int c)
+int	main(void)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
+	char	*mem;
+
+	mem = "Hello       ";
+	ft_memmove(mem + 7, mem, 5);
+	ft_putstr_fd(mem, 1);
 	return (0);
 }
