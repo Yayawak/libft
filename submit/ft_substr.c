@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avondale <avondale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:03:33 by athawebo          #+#    #+#             */
-/*   Updated: 2023/04/20 15:04:01 by athawebo         ###   ########.fr       */
+/*   Updated: 2023/04/22 03:17:25 by avondale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
 // len is expected to be len of s or plus lenght of wanted how long
 /* char    *ft_substr(char const *s, unsigned int start, size_t len) */
@@ -40,9 +41,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	substr_len;
 	char	*substr;
 
+	if (!s)
+		return (NULL);
 	s_len = ft_strlen(s);
 	if (start >= s_len)
-		return (NULL);
+		return (ft_strdup(""));
 	substr_len = 0;
 	while (s[start + substr_len] && substr_len < len)
 		substr_len++;
@@ -56,20 +59,37 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (substr);
 }
 
-/* int main(int argc, char** argv) */
-/* { */
-/*     char    *str = "Axios espresso pretonum"; */
-/*     if (argc == 1) */
-/*         printf("provide start index to sub string (%s)\n", str); */
-/*     unsigned int    sub_at = 5; */
+// int	main()
+// {
+// 	char	*s = "01234";
+// 	size_t	size = 10;
+// 	char	*ret1 = ft_substr(s, 10, size);
 
-/*     size_t          plus_len = 4; */
-/*     if (*argv[1]) */
-/*         sub_at = *argv[1] - '0'; */
-/*     if (*argv[2]) */
-/*         plus_len = atoi(argv[2]); */
-/*         /1* sub_at = *argv[1]; *1/ */
-/*     char    *sub_str = ft_substr(str, sub_at, plus_len); */
-/*     printf("full str : %s\nsub_at : %d\nsub str : %s\n", */
-/*             str, sub_at, sub_str); */
-/* } */
+// 	printf("%s\n", ret1);
+// 	// int n = strncmp(ret1, "", 1);
+// 	// printf("value from strncmp = %d\n", n);
+// 	// if (!strncmp(ret1, "", 1))
+// 	// {
+// 		// free(ret1);
+// 	// }
+// 	// free(ret1);
+// 	// char	*ret2 = strncmp(s, 10, size);
+// }
+
+// /* int main(int argc, char** argv) */
+// /* { */
+// /*     char    *str = "Axios espresso pretonum"; */
+// /*     if (argc == 1) */
+// /*         printf("provide start index to sub string (%s)\n", str); */
+// /*     unsigned int    sub_at = 5; */
+
+// /*     size_t          plus_len = 4; */
+// /*     if (*argv[1]) */
+// /*         sub_at = *argv[1] - '0'; */
+// /*     if (*argv[2]) */
+// /*         plus_len = atoi(argv[2]); */
+// /*         /1* sub_at = *argv[1]; *1/ */
+// /*     char    *sub_str = ft_substr(str, sub_at, plus_len); */
+// /*     printf("full str : %s\nsub_at : %d\nsub str : %s\n", */
+// /*             str, sub_at, sub_str); */
+// /* } */

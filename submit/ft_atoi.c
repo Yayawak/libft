@@ -3,45 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avondale <avondale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:26:13 by athawebo          #+#    #+#             */
-/*   Updated: 2023/04/20 13:53:06 by athawebo         ###   ########.fr       */
+/*   Updated: 2023/04/21 23:59:17 by avondale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	power_of_ten(int n)
+int	is_space(char c)
 {
-	int	multiplier;
-
-	multiplier = 1;
-	while (n-- > 1)
-		multiplier *= 10;
-	return (multiplier);
+	if (c == '\t' || c == '\n' || c == '\r'
+		|| c == '\f' || c == '\v' || c == ' ')
+	{
+		return (1);
+	}
+	return (0);
 }
 
-// if inut = "4032"
 int	ft_atoi(const char *str)
 {
-	size_t	n;
 	size_t	i;
 	int		sum_digits;
+	int		sign;
 
-	n = ft_strlen(str);
 	sum_digits = 0;
-
-	i = -1;
-	while (--i < n)
-		sum_digits += (str[i] - '0') * power_of_ten(n - i);
-
-	return (sum_digits);
+	sign = 1;
+	i = 0;
+	while (is_space(str[i]) == 1)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (ft_isdigit(str[i]) == 1)
+	{
+		sum_digits = (sum_digits * 10) + (str[i] - '0');
+		i++;
+	}
+	return (sum_digits * sign);
 }
 
 
 // int	main()
 // {
-// 	printf("init number = 4032\n");
-// 	ft_atoi("4032");
+// 	char	*s = "-123F";
+// 	printf("init number = %s\n", s);
+// 	int n = ft_atoi(s);
+// 	printf("number from ft_atoi = %d\n", n);
 // }

@@ -2,12 +2,18 @@
 
 void    ft_lstclear(t_list **lst, void (*del)(void *))
 {
-    if (*lst)
+    t_list  *next_lst;
+
+    if (!lst || !*lst || !del)
+        return ;
+    while (*lst)
     {
-        ft_lstclear(&((*lst)->next), del);
+        next_lst = (*lst)->next;
         ft_lstdelone(*lst, del);
-        lst = NULL;
+        *lst = next_lst;
     }
+    // free(lst);
+    *lst = NULL;
 }
 
 /* int main() */
