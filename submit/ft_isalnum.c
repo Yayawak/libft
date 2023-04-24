@@ -6,7 +6,7 @@
 /*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:59:14 by athawebo          #+#    #+#             */
-/*   Updated: 2023/04/20 18:14:01 by athawebo         ###   ########.fr       */
+/*   Updated: 2023/04/24 22:27:29 by athawebo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	ft_isalnum(int c)
 		return (1);
 	return (0);
 }
-
 
 /*
 #include <stdio.h>

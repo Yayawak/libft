@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avondale <avondale@student.42.fr>          +#+  +:+       +#+        */
+/*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:58:39 by athawebo          #+#    #+#             */
-/*   Updated: 2023/04/22 04:38:13 by avondale         ###   ########.fr       */
+/*   Updated: 2023/04/24 22:41:07 by athawebo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*tmp;
+	char			*tmp;
 	unsigned int	i;
 
 	if (!s || !f)
