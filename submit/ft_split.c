@@ -6,84 +6,91 @@
 /*   By: avondale <avondale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:45:49 by athawebo          #+#    #+#             */
-/*   Updated: 2023/04/22 04:19:48 by avondale         ###   ########.fr       */
+/*   Updated: 2023/04/22 14:34:49 by avondale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stddef.h>
 #include <stdlib.h>
 
-static int	cal_sep_count(const char *s, char c)
+static int	ft_words_count(char const *s, char sep)
+{
+	char	*str;
+	int		words_count;
+	int		flag;
+
+	str = (char *) s;
+	words_count = 0;
+	flag = 0;
+	while (*str)
+	{
+		if (*str != sep && !flag)
+		{
+			words_count++;
+			flag = 1;
+		}
+		else if (*str == sep && flag)
+			flag = 0;
+		str++;
+	}
+	return (words_count);
+
+}
+
+static char	**free_str_arr(char **s)
 {
 	int	i;
-	int	sep_count;
+
+	i = -1;
+	while (s[++i])
+		free(s[i]);
+	free(s);
+	return (NULL);
+}
+
+static char	**ft_inner_split(char **splited, char *str, char sep, int words_count)
+{
+	int	i;
+	int	sub_word_len;
 
 	i = 0;
-	sep_count = 0;
-	while (s[i])
+	sub_word_len = 0;
+	while (i < words_count)
 	{
-		while (s[i + 1] == c)
+		if (*str && *str != sep)
+			sub_word_len++;
+		else if (sub_word_len != 0)
+		{
+			splited[i] = malloc(sizeof(char) * (sub_word_len + 1));
+			if (!splited[i])
+				return (free_str_arr(splited));
+			ft_memcpy(splited[i], str - sub_word_len, sub_word_len);
+			// ft_strlcpy(splited[i], str - sub_word_len, sub_word_len);
+			splited[i][sub_word_len] = '\0';
 			i++;
-		if (s[i] == c)
-			sep_count++;
-		i++;
+			sub_word_len = 0;
+		}
+		str++;
 	}
-	return (sep_count);
+	return (splited);
 }
 
-
-static int	sub_str_size(char const *sub, char sep)
+char	**ft_split(char const *s, char sep)
 {
-	int	i;
+	char	**splited;
+	char	*start_ptr;
+	int		words_count;
 
-	i = 0;
-	while (sub[i] != sep)
-		i++;
-	return (i);
-}
-
-static char	**alloc_substrs(char const *s, int word_count, char sep)
-{
-	int	i;
-	int	cur_substr_len;
-	char	**str_arr;
-
-	str_arr = (char **)malloc(sizeof(char *) * word_count);
-	i = 0;
-	while (i < word_count)
-	{
-		cur_substr_len = sub_str_size(&s[i], sep);
-		str_arr[i] = (char *)malloc(sizeof(char) * (1 + cur_substr_len));
-		if (!str_arr[i])
-			return (NULL);
-		i++;
-		str_arr[i][cur_substr_len] = '\0';
-	}
-	return (str_arr);
-}
-char	**ft_split(char const *s, char c)
-{
-	char	**str_arr;
-	int		word_count;
-	int		i;
-	int		j;
-	int		cur_substr_len;
-
-	word_count = cal_sep_count(s, c) - 1;
-	i = 0;
-	j = 0;
-	str_arr = alloc_substrs(s, word_count, c);
-	while (i < (int)ft_strlen(s))
-	{
-		while (s[i] == c)
-			i++;
-		cur_substr_len = sub_str_size(&s[i], c);
-		str_arr[j] = ft_substr(s, i, cur_substr_len);
-		i += cur_substr_len;
-		j++;
-	}
-	str_arr[word_count] = NULL;
-	return (str_arr);
+	if (!s)
+		return (NULL);
+	start_ptr = (char *)s;
+	words_count = ft_words_count(s, sep);
+	splited = malloc(sizeof(char *) * (words_count + 1));
+	if (!splited)
+		return (NULL);
+	splited[words_count] = NULL;
+	return ft_inner_split(splited, start_ptr, sep, words_count);
 }
 
 

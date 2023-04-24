@@ -6,7 +6,7 @@
 /*   By: avondale <avondale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:28:30 by athawebo          #+#    #+#             */
-/*   Updated: 2023/04/22 04:42:31 by avondale         ###   ########.fr       */
+/*   Updated: 2023/04/22 13:47:35 by avondale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void    ft_lstclear(t_list **lst, void (*del)(void *))
         *lst = next_lst;
     }
     *lst = NULL;
-    free(lst);
 }
 
 /* int main() */
