@@ -6,10 +6,9 @@
 /*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:21:33 by athawebo          #+#    #+#             */
-/*   Updated: 2023/04/20 16:47:452 by athawebo         ###   ########.fr       */
+/*   Updated: 2023/04/24 22:23:31 by athawebo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "libft.h"
 
@@ -23,7 +22,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	from = (unsigned char *) src;
 	to = (unsigned char *) dest;
-
 	if (from == to || n == 0)
 		return (dest);
 	if (to > from)

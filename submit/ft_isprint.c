@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avondale <avondale@student.42.fr>          +#+  +:+       +#+        */
+/*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:14:15 by athawebo          #+#    #+#             */
-/*   Updated: 2023/04/21 02:08:16 by avondale         ###   ########.fr       */
+/*   Updated: 2023/04/24 22:28:22 by athawebo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	ft_isprint(int c)
 {
 	if (c >= ' ' && c <= '~')
 		return (1);
-
 	return (0);
 }
 /*

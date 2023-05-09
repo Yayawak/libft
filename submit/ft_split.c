@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avondale <avondale@student.42.fr>          +#+  +:+       +#+        */
+/*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:45:49 by athawebo          #+#    #+#             */
-/*   Updated: 2023/04/22 14:34:49 by avondale         ###   ########.fr       */
+/*   Updated: 2023/04/24 22:42:29 by athawebo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static int	ft_words_count(char const *s, char sep)
 		str++;
 	}
 	return (words_count);
-
 }
 
 static char	**free_str_arr(char **s)
@@ -49,7 +48,7 @@ static char	**free_str_arr(char **s)
 	return (NULL);
 }
 
-static char	**ft_inner_split(char **splited, char *str, char sep, int words_count)
+char	**ft_inner_split(char **splited, char *str, char sep, int words_count)
 {
 	int	i;
 	int	sub_word_len;
@@ -66,7 +65,6 @@ static char	**ft_inner_split(char **splited, char *str, char sep, int words_coun
 			if (!splited[i])
 				return (free_str_arr(splited));
 			ft_memcpy(splited[i], str - sub_word_len, sub_word_len);
-			// ft_strlcpy(splited[i], str - sub_word_len, sub_word_len);
 			splited[i][sub_word_len] = '\0';
 			i++;
 			sub_word_len = 0;
@@ -90,10 +88,8 @@ char	**ft_split(char const *s, char sep)
 	if (!splited)
 		return (NULL);
 	splited[words_count] = NULL;
-	return ft_inner_split(splited, start_ptr, sep, words_count);
+	return (ft_inner_split(splited, start_ptr, sep, words_count));
 }
-
-
 // int main()
 // {
 // 	char *cols = "      split       this for   me  !       ";

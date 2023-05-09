@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avondale <avondale@student.42.fr>          +#+  +:+       +#+        */
+/*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:26:13 by athawebo          #+#    #+#             */
-/*   Updated: 2023/04/21 23:59:17 by avondale         ###   ########.fr       */
+/*   Updated: 2023/04/24 22:26:34 by athawebo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	ft_atoi(const char *str)
 	}
 	return (sum_digits * sign);
 }
-
 
 // int	main()
 // {

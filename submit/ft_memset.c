@@ -6,7 +6,7 @@
 /*   By: athawebo <athawebo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:42:45 by athawebo          #+#    #+#             */
-/*   Updated: 2023/04/20 14:43:29 by athawebo         ###   ########.fr       */
+/*   Updated: 2023/04/24 22:20:53 by athawebo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,5 @@ void	*ft_memset(void *b, int c, size_t n)
 //     ft_memset(p, (unsigned char)4, 7);
 //     printf("value after memset number : %d\n", val);
 //     /* printf("value after memset number : %d\n", val); */
-
-
 //     return 0;
 // }
