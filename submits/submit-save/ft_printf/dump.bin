@@ -1,0 +1,16 @@
+ft_[7mprint[27mf.h"
+
+size_t handle_c(va_list argp)
+{
+    ft_putchar_fd(va_arg(argp, int), 1);
+    return (1);
+}
+
+size_t  handle_s(va_list argp)
+{
+    char    *s;
+
+    // ! argp is not shifted
+    s = va_arg(argp, char *);
+    // ft_putstr_fd(s, 1);
+    [7mprint[27mf("%s

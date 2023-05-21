@@ -1,0 +1,4 @@
+[1;36m========-[ Execution output ]-========[0;37m
+
+[1;35m============-[ Valgrind ]-============[0;37m
+/bin/sh: valgrind: command not found
