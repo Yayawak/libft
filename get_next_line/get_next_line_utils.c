@@ -34,35 +34,6 @@ size_t	ft_strlen(const char *str)
 	return (len);
 }
 
-// char	*ft_strjoin(char const *s1, char const *s2)
-// {
-// 	int		sizetotal;
-// 	char	*res;
-// 	int		i;
-// 	int		j;
-
-// 	i = 0;
-// 	sizetotal = ft_strlen(s1) + ft_strlen(s2);
-// 	res = malloc(sizeof(char) * (sizetotal + 1));
-// 	if (!res || !s1 || !s2)
-// 		return (NULL);
-// 	while (s1[i] != 0)
-// 	{
-// 		res[i] = s1[i];
-// 		i++;
-// 	}
-// 	j = 0;
-// 	while (s2[j] != 0)
-// 	{
-// 		res[i] = s2[j];
-// 		i++;
-// 		j++;
-// 	}
-// 	res[sizetotal] = 0;
-//     printf("res %s\n", res);
-// 	return (res);
-// }
-
 // ? find \n
 char	*ft_strchr(const char *s, int c)
 {
@@ -75,4 +46,85 @@ char	*ft_strchr(const char *s, int c)
 	if (*s == (char)c)
 		return ((char *)s);
 	return (NULL);
+}
+
+int	is_nl_in_list(t_list *stash)
+{
+	int		i;
+	t_list	*current;
+
+	if (stash == NULL)
+		return (0);
+	current = ft_lst_get_last(stash);
+	i = 0;
+	while (current->content[i])
+	{
+		if (current->content[i] == '\n')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+void	allocline_bystash(char **line, t_list *stash)
+{
+	int		i;
+	size_t	linelen;
+
+	linelen = 0;
+	while (stash)
+	{
+		i = 0;
+		while (stash->content[i])
+		{
+			if (stash->content[i] == '\n')
+			{
+				// special add len
+				linelen++;
+				break ;
+			}
+			linelen++;
+			i++;
+		}
+		stash = stash->next;
+	}
+	*line = malloc(sizeof(char) * (linelen + 1));
+}
+
+t_list	*ft_lst_get_last(t_list *stash)
+{
+	t_list	*cur;
+
+	cur = stash;
+	while (cur && cur->next)
+		cur = cur->next;
+	return (cur);
+}
+
+t_list	*ft_lstnew(char *content)
+{
+	t_list	*root;
+
+	root = (t_list *)malloc(sizeof(t_list));
+	if (!root)
+		return (0);
+	root->content = content;
+	root->next = NULL;
+
+	return (root);
+}
+
+void	free_stash(t_list *stash)
+{
+	t_list	*cur;
+	t_list	*nxt;
+
+	cur = stash;
+	while (cur)
+	{
+		free(cur->content);
+		nxt = cur->next;
+		free(cur);
+		cur = cur->next;
+	}
 }

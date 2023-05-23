@@ -24,13 +24,13 @@ char    *get_next_line(int fd)
     get_line(&line);
     clear_stash();
 
-    if (line[0] == '\0')
-    {
-        // ? free stash
-        stash = NULL;
-        free(line);
-        return (NULL);
-    }
+    // if (line[0] == '\0')
+    // {
+    //     // ? free stash
+    //     stash = NULL;
+    //     free(line);
+    //     return (NULL);
+    // }
     printf("created line is : %s\n", line); // corercted
     printf("--------------------\n");
     return (line);
@@ -52,6 +52,7 @@ void    read_file(int fd)
         if (readed_size == -1 || (stash == NULL && readed_size == 0))
         {
             free(buff);
+            // free(stash);
             return ;
         }
         // ? prevent outof segment
@@ -76,10 +77,13 @@ void    append_stash(char *buff, int readed_size)
         i++;
     }
     new->content[i] = '\0';
-    if (stash == NULL)
-        stash = new;
-    else
-        ft_lst_get_last(stash)->next = new;
+    printf("p of new : %p\n", new);
+    stash = new;
+    // if (stash == NULL)
+    //     stash = new;
+    // else
+    //     ft_lst_get_last(stash)->next = new;
+    // printf("p of stash : %p\n", stash);
 }
 
 void get_line(char  **line)
@@ -87,15 +91,17 @@ void get_line(char  **line)
     int i;
     int j;
 
-    // printf("p of stash : %p\n", stash);
+    printf("p of stash : %p\n", stash);
     if (stash == NULL)
         return ;
-    // printf("here\n");
+    printf("here\n");
     allocline_bystash(line, stash);
-    // printf("p of line %p\n", *line);
+    printf("p of line %p\n", *line);
     if (*line == NULL)
         return ;
     j = 0;
+    // while (stash)
+    // while (stash)
     while (stash)
     {
         i = 0;
@@ -117,6 +123,7 @@ void get_line(char  **line)
     }
     (*line)[j] = '\0';
 }
+
 
 // ! bug exist here that make stash = NULL should not occured
 void    clear_stash()
@@ -163,13 +170,6 @@ int main(void)
     // s = get_next_line(fd);
     // s = get_next_line(fd);
     printf("fd : %d\n", fd);
-    get_next_line(fd);
-    get_next_line(fd);
-    get_next_line(fd);
-    get_next_line(fd);
-    get_next_line(fd);
-    get_next_line(fd);
-    get_next_line(fd);
     get_next_line(fd);
     get_next_line(fd);
     get_next_line(fd);
