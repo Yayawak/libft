@@ -48,7 +48,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-int	is_nl_in_list(t_list *stash)
+int	is_nl_in_lstlast(t_list *stash)
 {
 	int		i;
 	t_list	*current;
@@ -88,6 +88,9 @@ void	allocline_bystash(char **line, t_list *stash)
 		}
 		stash = stash->next;
 	}
+	// line[linelen] = 0;
+	// line[linelen] = NULL;
+	// *line[linelen] = '\0';
 	*line = malloc(sizeof(char) * (linelen + 1));
 }
 

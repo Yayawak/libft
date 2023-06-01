@@ -18,12 +18,13 @@ typedef struct  s_list
 } t_list;
 
 char    *get_next_line(int fd);
-char	*ft_strjoin(char const *s1, char const *s2);
+// char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *str);
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
-char	*ft_strchr(const char *s, int c);
+// size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+// char	*ft_strchr(const char *s, int c);
 
-int     is_nl_in_list(t_list *stash);
+int     is_nl_in_lstlast(t_list *stash);
+// int     is_nl_in_list(t_list *stash);
 t_list  *ft_lst_get_last(t_list *stash);
 t_list	*ft_lstnew(char *content);
 void	allocline_bystash(char **line, t_list *stash);
