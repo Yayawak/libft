@@ -18,5 +18,5 @@ tstq:
 
 # test: all
 
-db: all
-	${LLDB} ./a.out
+db:
+	${CLANG} -g -D BUFFER_SIZE=3 get_next_line_utils.c gnl_v3.c && ${LLDB} ./a.out
