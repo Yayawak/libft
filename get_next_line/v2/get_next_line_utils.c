@@ -6,46 +6,51 @@ size_t	ft_strlen(const char *str)
 
 	len = 0;
 	while (str[len])
-	{
 		len++;
-	}
 	return (len);
 }
 
-int	is_nl_in_rear(t_q *q)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
+	size_t	l1;
+	size_t	l2;
+	char	*joiner;
 
-	if (q == NULL || q->rear == NULL)
-	// if (q == NULL || q->rear == NULL || q->rear->content == NULL)
-		return (0);
-	i = 0;
-	while (q->rear->content[i])
-	{
-		if (q->rear->content[i] == '\n')
-			return (1);
-		i++;
-	}
-	return (0);
+	if (!s1 || !s2)
+		return (NULL);
+	l1 = ft_strlen(s1);
+	l2 = ft_strlen(s2);
+	joiner = (char *)malloc(sizeof(char) * (l1 + l2 + 1));
+	if (joiner == NULL)
+		return (NULL);
+	joiner[l1 + l2] = '\0';
+	while (l2-- > 0)
+		joiner[l1 + l2] = s2[l2];
+	while (l1-- > 0)
+		joiner[l1] = s1[l1];
+	return (joiner);
 }
 
-int	is_nl_in_head(t_q *q)
+char    *c2s(char c)
 {
-	size_t	i;
-	char	*content;
+    char    *s;
+    s = malloc(sizeof(char) * 2);
+    s[0] = c;
+    s[1] = 0;
+    return s;
+}
 
-	if (q == NULL || q->head == NULL)
-		return (0);
-	// if (q->head == NULL)
-	// 	return (0);
-	content = q->head->content;
-	while (content[i])
-	{
-		if (content[i] == '\n')
-			return (1);
-		i++;
-	}
-	return (0);
+void    special_print(char *s)
+{
+    while (*s)
+    {
+        if (*s == '\n')
+            printf("\\n");
+        else
+            printf("%c", *s);
+        s++;
+    }
+    printf("\n");
 }
 
 t_node	*new_node(char *content)
@@ -78,10 +83,7 @@ t_node	*deq(t_q *q)
 	t_node	*tmp;
 
 	if (q->head == NULL)
-	{
-		// printf("Q is empty (no head point to.)\n");
 		return NULL;
-	}
 	tmp = q->head;
 	q->head = q->head->next;
 	if (q->head == NULL)
@@ -93,18 +95,20 @@ void	display_q(t_q	*q)
 {
 	t_node	*cur;
 
+	printf("======= START Display Q ============\n");
 	if (q == NULL)
 	{
-		// printf("Q is NULL.\n");
+		printf("Q is NULL.\n");
+		// printf("X\n");
 		return ;
 	}
+	// printf("X\n");
 	if (q->head == NULL)
 	{
 		printf("Q Head is NULL\n");
 		return ;
 	}
 	cur = q->head;
-	printf("======= START Display Q ============\n");
 	int i = 0;
 	while (cur)
 	{
@@ -130,7 +134,6 @@ void	display_q(t_q	*q)
 	printf("\n\n");
 }
 
-// t_q	*init_q()
 t_q	*init_q(t_node *head)
 {
 	t_q	*q;
@@ -143,53 +146,19 @@ t_q	*init_q(t_node *head)
 
 void    allocline(char **line, t_q *q)
 {
-    t_node  *cur;
     size_t  linelen;
-    size_t  i_subnode;
-
-    cur = q->head;
-    linelen = 0;
-    // concept of Q : first in is old line (first line)
-    // so if we want to get it's we encounter in front
-    while (cur)
-    {
-        i_subnode = 0;
-        while (cur->content[i_subnode])
-        {
-            if (cur->content[i_subnode] == '\n')
-            {
-                // for malloc \n in returned line
-                linelen++;
-                goto exit_loop;
-            }
-            linelen++;
-            i_subnode++;
-        }
-        cur = cur->next;
-    }
-    exit_loop:
-    *line = malloc(sizeof(char) * (linelen + 1));
-    (*line)[linelen - 1] = '\n';
-    (*line)[linelen] = 0;
+	// linelen = 1; // for \n
+	linelen = 0; // for \n
+	while (q->head->content[linelen] != '\n')
+		linelen++;
+	linelen++;
+	*line = malloc(sizeof(char) * (linelen + 1));
+	// (*line)[linelen] = '\n';
+	// (*line)[++linelen] = 0;
 }
 
-
-// int main()
-// {
-//     t_node *root;
-//     t_node *n2;
-//     t_node *n3;
-//     t_node *new;
-
-// 	t_q	*q;
-// 	q = malloc(sizeof(t_q));
-// 	q->head = NULL;
-// 	// q->head;
-// 	// q->rear = NULL;
-
-// 	// root->content = "aaaaaaaaaaa";
-
-// 	// enq(q, root);
-
-// 	// display_q(q);
-// }
+void	freenode(t_node *n)
+{
+	free(n->content);
+	free(n);
+}
