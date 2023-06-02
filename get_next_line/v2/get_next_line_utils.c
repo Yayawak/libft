@@ -162,3 +162,16 @@ void	freenode(t_node *n)
 	free(n->content);
 	free(n);
 }
+
+void    freeq(t_q *q2free)
+{
+    t_node  *cur;
+
+    cur = deq(q2free);
+    while (cur)
+    {
+        freenode(cur);
+        cur = deq(q2free);
+    }
+    free(q2free);
+}

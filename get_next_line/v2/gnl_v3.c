@@ -1,6 +1,4 @@
 #include "get_next_line.h"
-#include <stddef.h>
-#include <string.h>
 
 static t_q  *q;
 
@@ -17,15 +15,12 @@ void    read_file(int fd)
         if (buff == NULL)
             return ;
         readed_size = read(fd, buff, BUFFER_SIZE);
-        // printf("readed size is : %zu\n", (size_t)readed_size);
         // error of read size occcur when ??
         if (readed_size == -1 || (q == NULL && readed_size == 0))
         {
             free(buff);
             return ;
         }
-        // printf("buff : %s\n", buff);
-        // special_print(buff);
         buff[readed_size] = '\0';
         dup_buf_to_q(buff, readed_size);
         free(buff);
@@ -45,24 +40,10 @@ void    dup_buf_to_q(char *buff, int readed_size)
     new = new_node(content);
     while (++i < readed_size)
         new->content[i] = buff[i];
-    // printf("buff : %s\n", buff);
     if (q == NULL)
         q = init_q(new);
     else
         enq(q, new);
-}
-
-void    freeq(t_q *q2free)
-{
-    t_node  *cur;
-
-    cur = deq(q2free);
-    while (cur)
-    {
-        freenode(cur);
-        cur = deq(q2free);
-    }
-    free(q2free);
 }
 
 void    reshape_q()

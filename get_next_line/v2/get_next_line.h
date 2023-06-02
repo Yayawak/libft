@@ -39,5 +39,6 @@ char    *c2s(char c);
 void    special_print(char *s);
 void    reshape_q();
 void	freenode(t_node *n);
+void    freeq(t_q *q2free);
 
 #endif
