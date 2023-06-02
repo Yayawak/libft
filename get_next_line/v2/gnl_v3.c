@@ -98,9 +98,12 @@ void    reshape_q()
     char    *new_cnt;
 
     cur = q->head;
+    // cur = deq(q);
     // new_q = init_q(new_node(""));
     // new_q = init_q(new_node(new_cnt));
     // new_q = init_q(new_node(""));
+    // display_q(q);
+    new_q = NULL;
     new_cnt = "";
     while (cur)
     // while (cur->next)
@@ -109,22 +112,30 @@ void    reshape_q()
         while (cur->content[i])
         {
             new_cnt = ft_strjoin(new_cnt, c2s(cur->content[i]));
+            // if (cur->content[i] == '\n')
+            // special_print(new_cnt);
+            // if (cur->content[i] == '\n' || cur->content[i] == 0)
             if (cur->content[i] == '\n')
             {
+                printf("found'\\n'\n");
                 if (new_q == NULL)
                     new_q = init_q(new_node(new_cnt));
                 else
-                {
                     enq(new_q, new_node(new_cnt));
-                    new_cnt = "";
-                }
+                new_cnt = "";
             }
             i++;
+            // special_print(new_cnt);
+            // special_print(new_cnt);
         }
-        printf("cur->content = %s\n", cur->content);
+        // printf("cur->content = %s\n", cur->content);
         cur = cur->next;
+        // cur = deq(q);
     }
     display_q(new_q);
+    // printf("new q -> H 1 = %s\n", new_q->head->content);
+    // if (new_q && new_q->rear)
+    //     printf("new q -> Rear 1 = %s\n", new_q->rear->content);
 }
 
 void    dup_buf_to_q(char *buff, int i, int readed_size)
@@ -168,12 +179,7 @@ void    get_line_from_q(char **line)
         while (cur->content[i_qcnt])
         {
             if (cur->content[i_qcnt] == '\n')
-            {
-                // cur
-                // cur
-                // deq
                 return ;
-            }
             (*line)[j_line++] = cur->content[i_qcnt++];
         }
         cur = cur->next;

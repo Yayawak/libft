@@ -95,7 +95,7 @@ void	display_q(t_q	*q)
 
 	if (q == NULL)
 	{
-		printf("Q is NULL.\n");
+		// printf("Q is NULL.\n");
 		return ;
 	}
 	if (q->head == NULL)
@@ -106,7 +106,7 @@ void	display_q(t_q	*q)
 	cur = q->head;
 	printf("======= START Display Q ============\n");
 	int i = 0;
-	while (cur->next)
+	while (cur)
 	{
 		int j = 0;
 		// if (cur->content)
