@@ -10,7 +10,7 @@ SD = sudo
 # ${CLANG} -g gnl_v3.c && ./a.out
 # ${CLANG} -g -D BUFFER_SIZE=3 get_next_line_utils.c gnl_v3.c
 test:
-	${CLANG} -g -D BUFFER_SIZE=3 get_next_line_utils.c gnl_v3.c && ./a.out
+	${CLANG} -g -D BUFFER_SIZE=3 get_next_line_utils.c get_next_line.c && ./a.out
 
 tstq:
 	${CLANG} -g get_next_line_utils.c
@@ -19,4 +19,5 @@ tstq:
 # test: all
 
 db:
-	${CLANG} -g -D BUFFER_SIZE=3 get_next_line_utils.c gnl_v3.c && ${LLDB} ./a.out
+	${CLANG} -g -D BUFFER_SIZE=3 get_next_line_utils.c get_next_line.c && ${LLDB} ./a.out
+

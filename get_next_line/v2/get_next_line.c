@@ -1,121 +1,152 @@
-// void
-#include <stdio.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
+#include "get_next_line.h"
 
-char	*ft_strchr(const char *s, int c)
+static t_q  *q;
+
+void    read_file(int fd)
 {
-	while (*s)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
-	}
-	if (*s == (char)c)
-		return ((char *)s);
-	return (NULL);
-}
-
-char    *get_next_line(int fd)
-{
-    char    *line;
-
-    return line;
-}
-
-char    *stash = NULL;
-
-char    *gl(int fd)
-{
-    char    *buf;
-    size_t  buf_size;
+    char    *buff;
     ssize_t readed_size;
-    char    *line;
 
-    buf_size = 100;
-
-    // stash = malloc(sizeof(char) * (1000 + 1));
-    // stash = calloc(sizeof(char) * (1000 + 1));
-
-    buf = calloc(sizeof(char), (buf_size + 1));
-    buf[buf_size] = '\0';
-
-    int j = 0;
+    readed_size = 1;
     while (readed_size != 0)
     {
-        readed_size =  read(fd, buf, 1);
-        char    *nl;
-        nl = ft_strchr(buf, '\n');
-        if (nl != NULL)
+        buff = malloc(sizeof(char) * BUFFER_SIZE + 1);
+        if (buff == NULL)
+            return ;
+        readed_size = read(fd, buff, BUFFER_SIZE);
+        // error of read size occcur when ??
+        if (readed_size == -1 || (q == NULL && readed_size == 0))
         {
-            stash[j] = buf[j];
+            free(buff);
+            return ;
         }
-        j++;
+        buff[readed_size] = '\0';
+        dup_buf_to_q(buff, readed_size);
+        free(buff);
     }
-    // ft_chr
-    // readed_size =  read(fd, buf, buf_size);
-    printf("rs is %zu\n", readed_size);
-
-    // todo : copy from buff to stash
-    int i = 0;
-    // while (buf[i] && i < readed_size)
-    while (i < readed_size)
-    {
-        stash[i] = buf[i];
-        i++;
-    }
-    // stash[i] = 0;
-    // ! bug
-    // stash[0] = 0;
-    // stash = NULL;
-
-    printf("stash data is : %s\n", stash);
-
-    //todo : get line
-    i = 0;
-    while (stash[i] != '\n')
-        i++;
-    i++; // for \n
-    line = malloc(sizeof(char) * (i + 1));
-
-    i = 0;
-    while (stash[i] != '\n')
-    {
-        line[i] = stash[i];
-        i++;
-    }
-    line[i] = '\n';
-    // line[i + 1] = '\0';
-    line[i++] = '\0';
-    printf("line is : %s\n", line);
-
-    // todo : clear stash
-    stash += i;
-    printf("stash data is : %s\n", stash);
-    printf("==============================\n");
-
-    return line;
 }
 
-int main()
+void    dup_buf_to_q(char *buff, int readed_size)
 {
-    // rs = 12
-    // line = calloc(sizeof(char), readed_size);
-    // int fd = open("dummy.txt", O_RDONLY);
-    // stash = calloc(sizeof(char), (1000 + 1));
-    // stash[1000] = '\0';
+    char    *content;
+    t_node  *new;
+    int     i;
 
-    // // printf("line is : %s\n", gl(fd));
-    // gl(fd);
-    // gl(fd);
-    // gl(fd);
-    // printf("line is : %s\n", gl(fd));
-
-    // char    *s = "Hello\\nYYYY";
-    char    *s = "HelloYYYY";
-    printf("ptr of s is %p\n", s);
-    // printf("ptr of \\n is %p\n", ft_strchr(s, 'Y'));
-    printf("ptr of Y is %p\n", ft_strchr(s, 'Y'));
+    i = -1;
+    content = malloc(sizeof(char) * (readed_size + 1));
+    if (content == NULL)
+        return ;
+    new = new_node(content);
+    while (++i < readed_size)
+        new->content[i] = buff[i];
+    if (q == NULL)
+        q = init_q(new);
+    else
+        enq(q, new);
 }
 
+void    reshape_q()
+{
+    t_node  *cur;
+    t_q     *new_q;
+    int i;
+    char    *new_cnt;
+
+    cur = q->head;
+    new_q = NULL;
+    new_cnt = "";
+    while (cur)
+    {
+        i = 0;
+        while (cur->content[i])
+        {
+            new_cnt = ft_strjoin(new_cnt, c2s(cur->content[i]));
+            if (cur->content[i] == '\n')
+            {
+                if (new_q == NULL)
+                    new_q = init_q(new_node(new_cnt));
+                else
+                    enq(new_q, new_node(new_cnt));
+                new_cnt = "";
+            }
+            i++;
+        }
+        cur = cur->next;
+    }
+    freeq(q);
+    q = new_q;
+    // display_q(new_q);
+}
+
+void    get_line_from_q(char **line)
+{
+    int i;
+
+    // ! bug maybe here q points to NULL but still accessable ?
+    if (q == NULL)
+    {
+        *line = "";
+        // freeq(q);
+        return ;
+    }
+    allocline(line, q);
+    if (*line == NULL)
+        return ;
+
+    i = -1;
+    // printf("line line line : %s\n", q->head->content);
+    while (q->head->content[++i] != '\n')
+    {
+        (*line)[i] = q->head->content[i];
+    }
+    (*line)[i] = '\n';
+    (*line)[i + 1] = 0;
+    // printf("line line line : %s\n", *line);
+    // deq(q);
+    freenode(deq(q));
+}
+
+char    *get_next_line(fd)
+{
+    char    *line;
+
+    if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &line, 0) < 0)
+        return (NULL);
+    read_file(fd);
+
+    if (q && q->head)
+    {
+        reshape_q();
+    }
+    get_line_from_q(&line);
+    if (line[0] == '\0')
+    {
+        // free(line);
+    }
+    // display_q(q);
+    printf("created line is : %s", line);
+    return (line);
+}
+
+// int main(void)
+// {
+//     int fd;
+
+//     fd = open("dummy.txt", O_RDONLY);
+//     get_next_line(fd);
+//     get_next_line(fd);
+//     get_next_line(fd);
+// }
+
+//     get_next_line(fd);
+//     get_next_line(fd);
+//     get_next_line(fd);
+//     get_next_line(fd);
+//     get_next_line(fd);
+//     get_next_line(fd);
+//     get_next_line(fd);
+//     get_next_line(fd);
+//     get_next_line(fd);
+
+//     return (0);
+// }

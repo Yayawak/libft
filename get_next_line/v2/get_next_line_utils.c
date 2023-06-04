@@ -82,6 +82,8 @@ t_node	*deq(t_q *q)
 {
 	t_node	*tmp;
 
+	if (!q)
+		return NULL;
 	if (q->head == NULL)
 		return NULL;
 	tmp = q->head;
@@ -159,12 +161,25 @@ void    allocline(char **line, t_q *q)
 
 void	freenode(t_node *n)
 {
+	// char	*s;
+
+	// s = n->content;
+	// n->content = s;
+
 	free(n->content);
 	free(n);
+	// n = n;
+
 }
 
 void    freeq(t_q *q2free)
 {
+	// t_node 	*n;
+
+	// n = q2free->head;
+	// q2free->head = n;
+
+
     t_node  *cur;
 
     cur = deq(q2free);
