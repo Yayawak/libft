@@ -161,15 +161,8 @@ void    allocline(char **line, t_q *q)
 
 void	freenode(t_node *n)
 {
-	// char	*s;
-
-	// s = n->content;
-	// n->content = s;
-
-	free(n->content);
-	free(n);
-	// n = n;
-
+	/* free(n->content); */
+	/* free(n); */
 }
 
 void    freeq(t_q *q2free)
